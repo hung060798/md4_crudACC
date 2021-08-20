@@ -1,0 +1,14 @@
+controller/UserController.java
+ controller.UserController
+service/UserService.java
+ service.UserService
+repository/IUserRepository.java
+ repository.IUserRepository
+service/IUserService.java
+ service.IUserService
+model/User.java
+ model.User
+config/ApplicationInitializer.java
+ config.ApplicationInitializer
+config/ApplicationConfig.java
+ config.ApplicationConfig

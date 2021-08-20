@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Show User</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2 style="text-align: center; background: cadetblue">List User Table</h2>
+  <a href="/create" class="btn btn-success">Create</a>
+  <a href="/show" class="btn btn-success">Home</a>
+
+  <form action="/findByName" method="get">
+    <input type="text" class="form-control" placeholder="search" name="findName">
+    <input type="text" hidden name="action" value="findName">
+    <button type="submit" class="btn btn-success">Find</button>
+  </form>
+
+  <table class="table table-bordered">
+    <thead>
+    <tr style="text-align: center; background: blanchedalmond;">
+      <th>ID</th>
+      <th>UserName</th>
+      <th>Password</th>
+      <th>Date</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  th:each="user,loop:${list}">
+      <td th:text="${user.id}"></td>
+      <td th:text="${user.userName}"></td>
+      <td th:text="${user.passWord}"></td>
+      <td th:text="${user.createDate}"></td>
+      <td>
+        <a th:href="@{/edit/{id}(id=${user.id})}"  class="btn btn-warning">Edit</a>
+        <a th:href="@{/delete/{id}(id=${user.id})}"  class="btn btn-danger">Delete</a>
+      </td>
+
+    </tr>
+
+    </tbody>
+  </table>
+  <a href="/show?pageNumber=0" class="btn btn-warning">1</a>
+  <a href="/show?pageNumber=1" class="btn btn-warning">2</a>
+  <a href="/show?pageNumber=2" class="btn btn-warning">Next</a>
+</div>
+</body>
+</html>
